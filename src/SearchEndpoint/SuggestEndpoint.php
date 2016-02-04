@@ -33,7 +33,7 @@ class SuggestEndpoint extends AbstractSearchEndpoint
         if (count($this->getAll()) > 0) {
             /** @var Suggest $suggest */
             foreach ($this->getAll() as $suggest) {
-                $output[$suggest->getName()] = $suggest->toArray();
+                $output = array_merge($output, $suggest->toArray());
             }
         }
 

@@ -58,7 +58,7 @@ class SuggestEndpointTest extends \PHPUnit_Framework_TestCase
         $instance->add($suggest);
 
         $this->assertEquals(
-            ['foo' => $suggest->toArray()],
+            $suggest->toArray(),
             $instance->normalize($normalizerInterface)
         );
     }

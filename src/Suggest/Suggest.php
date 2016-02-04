@@ -71,8 +71,10 @@ class Suggest implements BuilderInterface
         }
 
         $output = [
-            'text' => $this->text,
-            'term' => $this->getParameters(),
+            $this->name => [
+                'text' => $this->text,
+                'term' => $this->getParameters(),
+            ]
         ];
 
         return $output;

@@ -33,11 +33,13 @@ class SuggestTest extends \PHPUnit_Framework_TestCase
         // Case #1 suggest without field and size params.
         $suggest = new Suggest('foo', 'bar');
         $expected = [
-            'text' => 'bar',
-            'term' => [
-                'field' => '_all',
-                'size' => 3,
-            ],
+            'foo' => [
+                'text' => 'bar',
+                'term' => [
+                    'field' => '_all',
+                    'size' => 3,
+                ],
+            ]
         ];
         $this->assertEquals($expected, $suggest->toArray());
     }
@@ -57,12 +59,14 @@ class SuggestTest extends \PHPUnit_Framework_TestCase
             ]
         );
         $expected = [
-            'text' => 'bar',
-            'term' => [
-                'field' => 'title',
-                'size' => 5,
-                'analyzer' => 'whitespace',
-            ],
+            'foo' => [
+                'text' => 'bar',
+                'term' => [
+                    'field' => 'title',
+                    'size' => 5,
+                    'analyzer' => 'whitespace',
+                ],
+            ]
         ];
         $this->assertEquals($expected, $suggest->toArray());
     }
