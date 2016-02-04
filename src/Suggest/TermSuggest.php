@@ -11,29 +11,14 @@
 
 namespace ONGR\ElasticsearchDSL\Suggest;
 
-use ONGR\ElasticsearchDSL\BuilderInterface;
-use ONGR\ElasticsearchDSL\ParametersTrait;
-
-class Suggest implements BuilderInterface
+class TermSuggest extends AbstractSuggest
 {
-    use ParametersTrait;
-
     const DEFAULT_SIZE = 3;
-
-    /**
-     * @var string
-     */
-    private $name;
-
-    /**
-     * @var string
-     */
-    private $text;
 
     public function __construct($name, $text, $parameters = [])
     {
-        $this->name = $name;
-        $this->text = $text;
+        $this->setName($name);
+        $this->setText($text);
         $this->setParameters($parameters);
     }
 
@@ -44,17 +29,7 @@ class Suggest implements BuilderInterface
      */
     public function getType()
     {
-        return 'suggest';
-    }
-
-    /**
-     * Returns suggest name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
+        return 'term';
     }
 
     /**
@@ -71,8 +46,8 @@ class Suggest implements BuilderInterface
         }
 
         $output = [
-            $this->name => [
-                'text' => $this->text,
+            $this->getName() => [
+                'text' => $this->getText(),
                 'term' => $this->getParameters(),
             ]
         ];

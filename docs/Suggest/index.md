@@ -6,7 +6,7 @@ To form a suggest you have to create `Search` object. See below an example of su
 
 ```php
 $search = new Search();
-$suggest = new Suggest('my_suggest', 'searchText', ['field' => 'title', 'size' => 5]);
+$suggest = new TermSuggest('my_suggest', 'searchText', ['field' => 'title', 'size' => 5]);
 $search->addSuggest($suggest);
 $queryArray = $search->toArray();
 ```
@@ -29,9 +29,9 @@ You're able to create more than one suggest:
 
 ```php
 $search = new Search();
-$suggest1 = new Suggest('my_suggest1', 'the amsterdma meetpu', ['field' => 'body', 'size' => 5]);
+$suggest1 = new TermSuggest('my_suggest1', 'the amsterdma meetpu', ['field' => 'body', 'size' => 5]);
 $search->addSuggest($suggest1);
-$suggest2 = new Suggest('my_suggest2', 'the rottredam meetpu', ['field' => 'title', 'size' => 5]);
+$suggest2 = new TermSuggest('my_suggest2', 'the rottredam meetpu', ['field' => 'title', 'size' => 5]);
 $search->addSuggest($suggest2);
 $queryArray = $search->toArray();
 ```

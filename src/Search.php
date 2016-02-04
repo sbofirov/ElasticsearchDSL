@@ -25,9 +25,9 @@ use ONGR\ElasticsearchDSL\SearchEndpoint\SearchEndpointInterface;
 use ONGR\ElasticsearchDSL\SearchEndpoint\SortEndpoint;
 use ONGR\ElasticsearchDSL\Serializer\Normalizer\CustomReferencedNormalizer;
 use ONGR\ElasticsearchDSL\Serializer\OrderedSerializer;
+use ONGR\ElasticsearchDSL\Suggest\AbstractSuggest;
 use Symfony\Component\Serializer\Normalizer\CustomNormalizer;
 use ONGR\ElasticsearchDSL\SearchEndpoint\SuggestEndpoint;
-use ONGR\ElasticsearchDSL\Suggest\Suggest;
 
 /**
  * Search object that can be executed by a manager.
@@ -383,11 +383,11 @@ class Search
     /**
     * Adds suggest into search.
     *
-    * @param Suggest $suggest
+    * @param AbstractSuggest $suggest
     *
     * @return $this
     */
-    public function addSuggest(Suggest $suggest)
+    public function addSuggest(AbstractSuggest $suggest)
     {
         $this->getEndpoint(SuggestEndpoint::NAME)->add($suggest, $suggest->getName());
 
